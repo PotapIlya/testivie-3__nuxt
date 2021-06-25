@@ -1,23 +1,20 @@
 export default
 {
     getTasks(state, data) {
-        state.basicArrayTasks = data;
         state.statusAxios = false;
 
-        const peoples = data.reduce((acc, item) => {
+        state.basicArrayTasks = data;
+        state.tasks = state.basicArrayTasks.slice(0, state.amountOnePage);
+
+        state.peoples = data.reduce((acc, item) => {
             if (!acc.includes(item.userId)){
                 acc.push(item.userId);
             }
             return acc;
         }, []);
-
-        state.basicArrayPeoples = peoples;
-        state.peoples = peoples;
-        // state.selectTasksPeople = state.basicArrayPeoples;
+        state.basicArrayPeoples = state.peoples;
 
         state.countPage = Math.ceil(data.length / state.amountOnePage );
-
-        state.tasks = state.basicArrayTasks.slice(0, state.amountOnePage);
     },
     setPageNumber(state, number){
         state.pageNumber = number;
@@ -28,6 +25,7 @@ export default
         state.peoples = data.selectPeople;
         if (data.reset){
             state.peoples = state.basicArrayPeoples;
+            // console.log(state.peoples);
         }
     },
     updateAmountOnePage(state, data){

@@ -14,6 +14,7 @@ export default
             selectPeople = context.state.basicArrayPeoples;
             reset = true;
         }
+
         const selectTasksPeople = context.state.basicArrayTasks.reduce( (acc, item) => {
             if ( selectPeople.includes(item.userId) ){
                 acc.push(item);
