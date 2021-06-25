@@ -71,6 +71,12 @@ export default
                 status: true
             });
         }
+    },
+    async GET_TASK_BY_ID(context, id){
+        return await this.$axios.get('https://jsonplaceholder.typicode.com/todos?id=' + id);
+    },
+    async GET_USER_BY_ID(context, id){
+        return await this.$axios.get('https://jsonplaceholder.typicode.com/todos?userId=' + id);
     }
 
 };

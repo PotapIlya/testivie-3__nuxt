@@ -4,14 +4,12 @@
         class="w-full"
     >
         <sortTasks />
-
-
         <div class="flex-col text-center">
 
-            <div class="flex justify-between items-center">
-                <div class="w-1/6">id</div>
-                <div class="w-full">title</div>
-                <div class="w-2/6">button</div>
+            <div class="flex justify-between items-center mb-3">
+                <div class="w-1/6 text-2xl">id</div>
+                <div class="w-full text-2xl">title</div>
+                <div class="w-2/6 text-2xl">button</div>
             </div>
 
             <div class="flex-col">
@@ -24,31 +22,8 @@
                     :index="index"
                     :data="item"
                 />
-
             </div>
-
-
         </div>
-
-<!--        <table class="table-fixed">-->
-<!--            <thead>-->
-<!--                <tr>-->
-<!--                    <th class="w-1/2">Id</th>-->
-<!--                    <th class="w-1/4">Title</th>-->
-<!--                    <th class="w-1/6">Button</th>-->
-<!--                </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--                <task-->
-<!--                    v-for="(item, index) in GET_TASKS"-->
-<!--                    :key="item.id"-->
-
-
-<!--                    :index="index"-->
-<!--                    :data="item"-->
-<!--                />-->
-<!--            </tbody>-->
-<!--        </table>-->
     </div>
 
     <loader v-else />

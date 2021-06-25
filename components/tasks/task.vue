@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         redirect (id) {
-            this.$router.push('task/' + id);
+            this.$router.push('/task/' + id);
         }
     }
 };

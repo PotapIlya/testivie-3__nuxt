@@ -1,32 +1,33 @@
 <template>
-    <div>
-        <div class="inline-flex">
+    <div class="flex justify-start items-center mb-5">
+        <div class="flex justify-start items-center mr-6">
             <button
                 @click="SET_PAGE_NUMBER(false)"
                 class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
                 Prev
             </button>
-            <button>{{ GET_PAGE_NUMBER + 1 }} / {{ GET_COUNT_PAGE }}</button>
+            <h3 class="text-2xl px-2">
+                {{ GET_PAGE_NUMBER + 1 }} / {{ GET_COUNT_PAGE }}
+            </h3>
             <button
                 v-if="GET_PAGE_NUMBER+1 !== GET_COUNT_PAGE" @click="SET_PAGE_NUMBER(true)"
-                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">Next</button>
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+            >
+                Next
+            </button>
             <button
                 v-else disabled
-                class="bg-gray-300 bg-gray-500 text-gray-800 font-bold py-2 px-4 rounded-r">Next</button>
+                class="bg-gray-300 bg-gray-500 text-gray-800 font-bold py-2 px-4 rounded-r"
+            >
+                Next
+            </button>
         </div>
 
-
-
-        <select v-model="selectedSelect" v-if="select.length && selectedSelect" name="" id="">
-            <option v-for="item in select" :key="item.id" :value="item.value">
-                {{ item.value }}
-            </option>
-        </select>
 
         <div v-if="select.length" class="relative inline-block text-left">
             <div>
                 <button @click="showFormStatus = !showFormStatus" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    {{ selectedSelectActive }}
+                    <span v-if="selectedSelectActive">{{ selectedSelectActive.value }}</span>
                     <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -64,13 +65,14 @@ export default {
         showFormStatus: false, // form
     }),
     watch: {
-        selectedSelect () {
-            this.SET_AMOUNT_ONE_PAGE(this.selectedSelect);
-        }
+        // selectedSelect () {
+        //     this.SET_AMOUNT_ONE_PAGE(this.selectedSelect);
+        // }
     },
     mounted () {
         this.selectedSelect = this.select[0].value;
         this.selectSelected(1);
+        this.selectedSelectActive = this.select[0];
     },
     computed: {
         ...mapGetters('tasks', ['GET_PAGE_NUMBER', 'GET_COUNT_PAGE'])
@@ -78,8 +80,10 @@ export default {
     methods: {
         ...mapActions('tasks', ['SET_PAGE_NUMBER', 'SET_AMOUNT_ONE_PAGE']),
         selectSelected(id){
-            this.selectedSelectActive = this.select.filter( item => item.id === id)[0];
-            // this.showFormStatus = false;
+            const findItem = this.select.filter( item => item.id === id)[0]
+            this.selectedSelectActive = findItem;
+            this.SET_AMOUNT_ONE_PAGE(findItem.value);
+            this.showFormStatus = false;
         }
     }
 };
