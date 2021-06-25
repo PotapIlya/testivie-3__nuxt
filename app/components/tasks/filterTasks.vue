@@ -1,10 +1,17 @@
 <template>
-    <ul v-if="GET_BASIC_ARRAY_PEOPLE.length" class="">
+    <ul v-if="GET_BASIC_ARRAY_PEOPLE.length" class="list-disc w-1/6">
         <li v-for="item in GET_BASIC_ARRAY_PEOPLE" :key="item.id">
-            <label :for="item">
-                <input v-model="peopleArray" :value="item" type="checkbox">
-                <span>{{ item }}</span>
+            <input
+                :id="item"
+                v-model="peopleArray"
+                :value="item"
+                type="checkbox"
+                class="">
+
+            <label :for="item" class="">
+                <span>User_{{ item }}</span>
             </label>
+
         </li>
     </ul>
 </template>
@@ -26,6 +33,7 @@ export default {
             }, 50);
         },
         peopleArray () {
+
             this.FILTER_TASKS_PEOPLE(this.peopleArray);
         }
     },

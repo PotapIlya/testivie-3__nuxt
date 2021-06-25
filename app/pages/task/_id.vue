@@ -14,7 +14,10 @@
                 <span>Title: {{ item.title }}</span>
             </li>
         </ul>
-        <button @click=" $router.push('/') ">
+        <button
+            class="ring-4 ring-pink-300 ring-inset"
+            @click=" $router.push('/') "
+        >
             Back...
         </button>
     </div>

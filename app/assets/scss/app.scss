@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.pointer{
+    cursor: pointer;
+}
+.dropdown__item{
+    transition: .3s;
+
+    &:hover{
+        background: #dcdcdc;
+    }
+}

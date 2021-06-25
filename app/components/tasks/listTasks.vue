@@ -1,39 +1,54 @@
 <template>
-    <div v-if="GET_TASKS.length">
+    <div
+        v-if="GET_TASKS.length"
+        class="w-full"
+    >
         <sortTasks />
-        <table class="table-fixed">
-            <thead>
-                <tr>
-                    <th class="w-1/2 ...">
-                        Title
-                    </th>
-                    <th class="w-1/4 ...">
-                        Author
-                    </th>
-                    <th class="w-1/4 ...">
-                        Views
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr
-                    v-for="item in GET_TASKS"
+
+
+        <div class="flex-col text-center">
+
+            <div class="flex justify-between items-center">
+                <div class="w-1/6">id</div>
+                <div class="w-full">title</div>
+                <div class="w-2/6">button</div>
+            </div>
+
+            <div class="flex-col">
+                <task
+                    class="flex justify-between items-center py-1"
+                    v-for="(item, index) in GET_TASKS"
                     :key="item.id"
-                >
-                    <task
-                        :data="item"
-                    />
-                <!--                <td>Intro to CSS</td>-->
-                <!--                <td>Adam</td>-->
-                <!--                <td>858</td>-->
-                </tr>
-            <!--        <tr class="bg-blue-200">-->
-            <!--            <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>-->
-            <!--            <td>Adam</td>-->
-            <!--            <td>112</td>-->
-            <!--        </tr>-->
-            </tbody>
-        </table>
+
+
+                    :index="index"
+                    :data="item"
+                />
+
+            </div>
+
+
+        </div>
+
+<!--        <table class="table-fixed">-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th class="w-1/2">Id</th>-->
+<!--                    <th class="w-1/4">Title</th>-->
+<!--                    <th class="w-1/6">Button</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                <task-->
+<!--                    v-for="(item, index) in GET_TASKS"-->
+<!--                    :key="item.id"-->
+
+
+<!--                    :index="index"-->
+<!--                    :data="item"-->
+<!--                />-->
+<!--            </tbody>-->
+<!--        </table>-->
     </div>
 
     <loader v-else />

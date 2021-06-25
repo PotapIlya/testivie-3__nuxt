@@ -1,5 +1,5 @@
 <template>
-    <div v-if="statusLoader" class="flex" style="display: flex">
+    <div v-if="statusLoader" class="flex">
         <filterTasks />
         <listTasks />
     </div>
@@ -26,6 +26,8 @@ export default {
             await this.AXIOS_GET_TASKS().then( () => {
                 this.statusLoader = true;
             });
+        } else{
+            this.statusLoader = true;
         }
     },
     methods: {
