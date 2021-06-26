@@ -14,7 +14,7 @@ export default
             selectPeople = context.state.basicArrayPeoples;
             reset = true;
         }
-
+        // ищем в начальном массиве все задачи у выбранных людей
         const selectTasksPeople = context.state.basicArrayTasks.reduce( (acc, item) => {
             if ( selectPeople.includes(item.userId) ){
                 acc.push(item);

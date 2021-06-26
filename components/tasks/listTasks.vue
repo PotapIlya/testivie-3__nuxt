@@ -18,7 +18,6 @@
                     v-for="(item, index) in GET_TASKS"
                     :key="item.id"
 
-
                     :index="index"
                     :data="item"
                 />
@@ -34,7 +33,6 @@ import { mapGetters } from 'vuex';
 import sortTasks from '~/components/tasks/sortTasks';
 import loader from '~/components/basic/loader';
 import task from '~/components/tasks/task';
-// eslint-disable-next-line no-unused-vars
 export default {
     name: 'Tasks',
     components: {
@@ -43,8 +41,5 @@ export default {
     computed: {
         ...mapGetters('tasks', ['GET_TASKS'])
     },
-    mounted () {
-
-    }
 };
 </script>

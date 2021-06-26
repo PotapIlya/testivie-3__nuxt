@@ -64,11 +64,6 @@ export default {
 
         showFormStatus: false, // form
     }),
-    watch: {
-        // selectedSelect () {
-        //     this.SET_AMOUNT_ONE_PAGE(this.selectedSelect);
-        // }
-    },
     mounted () {
         this.selectedSelect = this.select[0].value;
         this.selectSelected(1);

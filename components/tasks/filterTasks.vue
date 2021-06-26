@@ -6,7 +6,6 @@
             class="filter__item my-2"
         >
             <div class="filter__item-wrapper flex">
-
                 <input
                     :id="item"
                     v-model="peopleArray"
@@ -18,7 +17,6 @@
                     <span class="filter__item-text">User_{{ item }}</span>
                 </label>
             </div>
-
 
         </li>
     </ul>
@@ -41,7 +39,6 @@ export default {
             }, 50);
         },
         peopleArray () {
-
             this.FILTER_TASKS_PEOPLE(this.peopleArray);
         }
     },
